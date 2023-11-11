@@ -91,7 +91,6 @@ function spriteExplode (mySprite: Sprite, lifespan: number) {
     )
 }
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Asteroid, function (sprite, otherSprite) {
-    info.changeLifeBy(-2)
     spriteExplode(otherSprite, 200)
     sprites.destroy(sprite)
 })
