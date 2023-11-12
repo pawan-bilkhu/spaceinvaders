@@ -718,6 +718,30 @@ function generateSmallerAsteroids (mySprite: Sprite) {
         asteroidSprite.lifespan = randint(500, 1500)
     }
 }
+function generateSmallProjectile (targetSprite: Sprite, offsetX: number, offsetY: number, speedX: number) {
+    playerProjectile = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . 4 4 . . . . . . . 
+        . . . . . . 4 5 5 4 . . . . . . 
+        . . . . . . 2 5 5 2 . . . . . . 
+        . . . . . . . 2 2 . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `, SpriteKind.SmallProjectile)
+    playerProjectile.setPosition(targetSprite.x, targetSprite.y)
+    playerProjectile.x += offsetX
+    playerProjectile.y += offsetY
+    playerProjectile.setVelocity(speedX, 0)
+}
 sprites.onDestroyed(SpriteKind.Explosion, function (sprite) {
     for (let value of sprites.allOfKind(SpriteKind.Asteroid)) {
         spriteExplode(value, 200)
@@ -752,7 +776,8 @@ let playerProjectile: Sprite = null
 let asteroidSprite: Sprite = null
 let explosionSprite: Sprite = null
 let smallAsteroidList: Image[] = []
-let fireRate = 200
+let fireRate = 100
+let powerLevel = 1
 info.setLife(3)
 info.setScore(0)
 music.setVolume(130)
@@ -959,11 +984,11 @@ let playerSprite = sprites.create(img`
     . . 1 1 . . . . . . . . . . . . 
     . . 1 1 1 8 1 1 2 2 . . . . . . 
     . . 1 1 1 1 1 8 . . . . . . . . 
-    . 1 2 1 1 1 1 1 . . . . . . . . 
-    1 2 2 2 1 2 2 1 1 1 1 1 1 1 . . 
+    . 1 1 1 1 1 1 1 . . . . . . . . 
+    1 8 8 8 1 2 2 1 1 1 1 1 1 1 . . 
     1 1 1 1 1 1 2 2 1 1 1 1 1 1 1 1 
-    1 2 2 2 1 2 2 1 1 1 1 1 1 1 . . 
-    . 1 2 1 1 1 1 1 . . . . . . . . 
+    1 8 8 8 1 2 2 1 1 1 1 1 1 1 . . 
+    . 1 1 1 1 1 1 1 . . . . . . . . 
     . . 1 1 1 1 1 8 . . . . . . . . 
     . . 1 1 1 8 1 1 2 2 . . . . . . 
     . . 1 1 . . . . . . . . . . . . 
@@ -973,33 +998,6 @@ let playerSprite = sprites.create(img`
 controller.moveSprite(playerSprite)
 playerSprite.setPosition(19, 58)
 playerSprite.setStayInScreen(true)
-forever(function () {
-    if (controller.A.isPressed()) {
-        playerProjectile = sprites.create(img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . 4 4 . . . . . . . 
-            . . . . . . 4 5 5 4 . . . . . . 
-            . . . . . . 2 5 5 2 . . . . . . 
-            . . . . . . . 2 2 . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            `, SpriteKind.SmallProjectile)
-        playerProjectile.setPosition(playerSprite.x, playerSprite.y)
-        playerProjectile.x += 15
-        playerProjectile.setVelocity(125, 0)
-        music.play(music.createSoundEffect(WaveShape.Triangle, 1132, 1, 255, 0, 200, SoundExpressionEffect.None, InterpolationCurve.Curve), music.PlaybackMode.InBackground)
-        pause(fireRate)
-    }
-})
 forever(function () {
     if (controller.B.isPressed()) {
         playerProjectile = sprites.create(img`
@@ -1026,6 +1024,19 @@ forever(function () {
         playerProjectile.lifespan = 2000
         music.play(music.melodyPlayable(music.smallCrash), music.PlaybackMode.InBackground)
         pause(1000)
+    }
+})
+forever(function () {
+    if (controller.A.isPressed()) {
+        music.play(music.createSoundEffect(WaveShape.Triangle, 1132, 1, 255, 0, 200, SoundExpressionEffect.None, InterpolationCurve.Curve), music.PlaybackMode.InBackground)
+        if (powerLevel == 1) {
+            generateSmallProjectile(playerSprite, 15, 0, 125)
+            generateSmallProjectile(playerSprite, 5, -10, 125)
+            generateSmallProjectile(playerSprite, 5, 10, 125)
+        } else {
+            generateSmallProjectile(playerSprite, 15, 0, 125)
+        }
+        pause(fireRate)
     }
 })
 game.onUpdateInterval(500, function () {
