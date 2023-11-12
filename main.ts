@@ -9,7 +9,203 @@ namespace SpriteKind {
     export const SmallAsteroid = SpriteKind.create()
     export const Explosion = SpriteKind.create()
     export const SmallProjectile = SpriteKind.create()
+    export const PowerUp = SpriteKind.create()
 }
+sprites.onCreated(SpriteKind.PowerUp, function (sprite) {
+    animation.runImageAnimation(
+    sprite,
+    [img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . d d . . . . . . . 
+        . . . . . . d 8 8 d . . . . . . 
+        . . . . . . d 8 8 d . . . . . . 
+        . . . . . . d 8 8 d . . . . . . 
+        . . . . . . d 8 8 d . . . . . . 
+        . . . . . . d 8 8 d . . . . . . 
+        . . . . . . d 8 8 d . . . . . . 
+        . . . . . . . d d . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `,img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . d d . . . . . . . 
+        . . . . . . d 9 9 d . . . . . . 
+        . . . . . . d 9 9 d . . . . . . 
+        . . . . . . d 9 9 d . . . . . . 
+        . . . . . . d 8 8 d . . . . . . 
+        . . . . . . d 8 8 d . . . . . . 
+        . . . . . . d 8 8 d . . . . . . 
+        . . . . . . . d d . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `,img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . d d . . . . . . . 
+        . . . . . . d 9 9 d . . . . . . 
+        . . . . . . d 9 9 d . . . . . . 
+        . . . . . . d 9 9 d . . . . . . 
+        . . . . . . d 9 9 d . . . . . . 
+        . . . . . . d 9 9 d . . . . . . 
+        . . . . . . d 9 9 d . . . . . . 
+        . . . . . . . d d . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `,img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . d d . . . . . . . 
+        . . . . . . d 9 9 d . . . . . . 
+        . . . . . . d 9 9 d . . . . . . 
+        . . . . . 9 d 9 9 d 9 . . . . . 
+        . . . . . 9 d 9 9 d 9 . . . . . 
+        . . . . . . d 9 9 d . . . . . . 
+        . . . . . . d 9 9 d . . . . . . 
+        . . . . . . . d d . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `,img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . d d . . . . . . . 
+        . . . . . . d 9 9 d . . . . . . 
+        . . . . . 9 d 9 9 d 9 . . . . . 
+        . . . . 9 . d 9 9 d . 9 . . . . 
+        . . . . 9 . d 9 9 d . 9 . . . . 
+        . . . . . 9 d 9 9 d 9 . . . . . 
+        . . . . . . d 9 9 d . . . . . . 
+        . . . . . . . d d . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `,img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . d d . . . . . . . 
+        . . . . 9 . d 9 9 d . 9 . . . . 
+        . . . 9 . . d 9 9 d . . 9 . . . 
+        . . . 9 . . d 9 9 d . . 9 . . . 
+        . . . 9 . . d 9 9 d . . 9 . . . 
+        . . . 9 . . d 9 9 d . . 9 . . . 
+        . . . . 9 . d 9 9 d . 9 . . . . 
+        . . . . . . . d d . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `,img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . 9 . . d d . . 9 . . . . 
+        . . . 9 . . d 9 9 d . . 9 . . . 
+        . . 9 . . . d 9 9 d . . . 9 . . 
+        . . 9 . . 9 d 9 9 d 9 . . 9 . . 
+        . . 9 . . 9 d 9 9 d 9 . . 9 . . 
+        . . 9 . . . d 9 9 d . . . 9 . . 
+        . . . 9 . . d 9 9 d . . 9 . . . 
+        . . . . 9 . . d d . . 9 . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `,img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . 9 . . . . d d . . . . 9 . . 
+        . 9 . . . . d 9 9 d . . . . 9 . 
+        9 . . . 9 . d 9 9 d . 9 . . . 9 
+        9 . . 9 . . d 9 9 d . . 9 . . 9 
+        9 . . 9 . . d 9 9 d . . 9 . . 9 
+        9 . . . 9 . d 9 9 d . 9 . . . 9 
+        . 9 . . . . d 9 9 d . . . . 9 . 
+        . . 9 . . . . d d . . . . 9 . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `,img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . 9 . . . . . d d . . . . . 9 . 
+        9 . . . . . d 9 9 d . . . . . 9 
+        . . . 9 . . d 9 9 d . . 9 . . . 
+        . . 9 . . . d 9 9 d . . . 9 . . 
+        . . 9 . . . d 9 9 d . . . 9 . . 
+        . . . 9 . . d 9 9 d . . 9 . . . 
+        9 . . . . . d 9 9 d . . . . . 9 
+        . 9 . . . . . d d . . . . . 9 . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `,img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . d d . . . . . . . 
+        . . . . . . d 9 9 d . . . . . . 
+        . . . . . . d 9 9 d . . . . . . 
+        . 9 . . . . d 9 9 d . . . . 9 . 
+        . 9 . . . . d 9 9 d . . . . 9 . 
+        . . . . . . d 8 8 d . . . . . . 
+        . . . . . . d 8 8 d . . . . . . 
+        . . . . . . . d d . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `,img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . d d . . . . . . . 
+        . . . . . . d 9 9 d . . . . . . 
+        . . . . . . d 9 9 d . . . . . . 
+        . . . . . . d 8 8 d . . . . . . 
+        . . . . . . d 8 8 d . . . . . . 
+        . . . . . . d 8 8 d . . . . . . 
+        . . . . . . d 8 8 d . . . . . . 
+        . . . . . . . d d . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `],
+    100,
+    true
+    )
+})
 sprites.onDestroyed(SpriteKind.LargeProjectile, function (sprite) {
     rocketExplode(sprite, 400)
 })
@@ -90,9 +286,23 @@ function spriteExplode (mySprite: Sprite, lifespan: number) {
     50,
     false
     )
+    if (Math.percentChance(25)) {
+        generatePowerUp(mySprite, 0)
+    }
+    if (mySprite.kind() == SpriteKind.Asteroid) {
+        generateSmallAsteroids(mySprite)
+    }
+    music.play(music.melodyPlayable(music.bigCrash), music.PlaybackMode.InBackground)
 }
+sprites.onOverlap(SpriteKind.Player, SpriteKind.PowerUp, function (sprite, otherSprite) {
+    powerLevel += 1
+    powerLevel = powerLevel % 4
+    sprites.destroy(otherSprite)
+})
 sprites.onOverlap(SpriteKind.SmallProjectile, SpriteKind.Enemy, function (sprite, otherSprite) {
     spriteExplode(otherSprite, 200)
+    info.changeScoreBy(1)
+    music.play(music.melodyPlayable(music.bigCrash), music.PlaybackMode.InBackground)
     sprites.destroy(sprite)
 })
 sprites.onCreated(SpriteKind.LargeProjectile, function (sprite) {
@@ -174,10 +384,47 @@ sprites.onCreated(SpriteKind.LargeProjectile, function (sprite) {
 sprites.onOverlap(SpriteKind.Asteroid, SpriteKind.Enemy, function (sprite, otherSprite) {
     spriteExplode(otherSprite, 200)
 })
-sprites.onDestroyed(SpriteKind.Asteroid, function (sprite) {
-    music.play(music.melodyPlayable(music.bigCrash), music.PlaybackMode.InBackground)
-    generateSmallerAsteroids(sprite)
-})
+function generateLargeProjectile (targetSprite: Sprite, offsetX: number, offsetY: number, speedX: number) {
+    playerProjectile = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . 1 1 1 1 . . . . . . . . 
+        . . . 2 8 8 8 8 8 . . . . . . . 
+        . . 2 5 1 1 1 1 1 1 1 1 1 1 1 1 
+        . 5 2 4 1 1 1 1 1 1 1 1 1 1 1 1 
+        . . . 2 8 8 8 8 8 . . . . . . . 
+        . . . . 1 1 1 . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `, SpriteKind.LargeProjectile)
+    playerProjectile.setPosition(targetSprite.x, targetSprite.y)
+    playerProjectile.x += offsetX
+    playerProjectile.y += offsetY
+    if (powerLevel > 1) {
+        if (sprites.allOfKind(SpriteKind.Asteroid).length > 0) {
+            playerProjectile.follow(sprites.allOfKind(SpriteKind.Asteroid).pop(), 50)
+        } else if (sprites.allOfKind(SpriteKind.Enemy).length > 0) {
+            playerProjectile.follow(sprites.allOfKind(SpriteKind.Enemy).pop(), 50)
+        } else {
+            playerProjectile.setVelocity(speedX, 0)
+        }
+    } else {
+        playerProjectile.setVelocity(speedX, 0)
+    }
+    playerProjectile.lifespan = 2000
+    playerProjectile.setFlag(SpriteFlag.AutoDestroy, true)
+}
+function generatePowerUp (targetSprite: Sprite, index: number) {
+    powerUpSprite = sprites.create(powerUpList[index], SpriteKind.PowerUp)
+    powerUpSprite.setPosition(targetSprite.x, targetSprite.y)
+    powerUpSprite.setVelocity(randint(-10, -25), 0)
+}
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Asteroid, function (sprite, otherSprite) {
     info.changeLifeBy(-2)
     scene.cameraShake(10, 500)
@@ -710,14 +957,6 @@ sprites.onOverlap(SpriteKind.LargeProjectile, SpriteKind.Asteroid, function (spr
     spriteExplode(otherSprite, 200)
     sprites.destroy(sprite)
 })
-function generateSmallerAsteroids (mySprite: Sprite) {
-    for (let index = 0; index < randint(4, 10); index++) {
-        asteroidSprite = sprites.create(smallAsteroidList._pickRandom(), SpriteKind.SmallAsteroid)
-        asteroidSprite.setPosition(mySprite.x, mySprite.y)
-        asteroidSprite.setVelocity(randint(-100, 100), randint(-100, 100))
-        asteroidSprite.lifespan = randint(500, 1500)
-    }
-}
 function generateSmallProjectile (targetSprite: Sprite, offsetX: number, offsetY: number, speedX: number) {
     playerProjectile = sprites.create(img`
         . . . . . . . . . . . . . . . . 
@@ -747,13 +986,9 @@ sprites.onDestroyed(SpriteKind.Explosion, function (sprite) {
     for (let value of sprites.allOfKind(SpriteKind.Asteroid)) {
         spriteExplode(value, 200)
     }
-    for (let value of sprites.allOfKind(SpriteKind.Enemy)) {
-        spriteExplode(value, 200)
+    for (let value2 of sprites.allOfKind(SpriteKind.Enemy)) {
+        spriteExplode(value2, 200)
     }
-})
-sprites.onDestroyed(SpriteKind.Enemy, function (sprite) {
-    music.play(music.melodyPlayable(music.bigCrash), music.PlaybackMode.InBackground)
-    info.changeScoreBy(1)
 })
 sprites.onOverlap(SpriteKind.SmallProjectile, SpriteKind.Asteroid, function (sprite, otherSprite) {
     spriteExplode(otherSprite, 200)
@@ -762,6 +997,14 @@ sprites.onOverlap(SpriteKind.SmallProjectile, SpriteKind.Asteroid, function (spr
 sprites.onCreated(SpriteKind.Explosion, function (sprite) {
     music.play(music.createSoundEffect(WaveShape.Square, 200, 1, 255, 0, 500, SoundExpressionEffect.Tremolo, InterpolationCurve.Linear), music.PlaybackMode.InBackground)
 })
+function generateSmallAsteroids (mySprite: Sprite) {
+    for (let index = 0; index < randint(4, 10); index++) {
+        asteroidSprite = sprites.create(smallAsteroidList._pickRandom(), SpriteKind.SmallAsteroid)
+        asteroidSprite.setPosition(mySprite.x, mySprite.y)
+        asteroidSprite.setVelocity(randint(-100, 100), randint(-100, 100))
+        asteroidSprite.lifespan = randint(500, 1500)
+    }
+}
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     info.changeLifeBy(-1)
     scene.cameraShake(4, 500)
@@ -773,12 +1016,16 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
     sprite.setFlag(SpriteFlag.GhostThroughSprites, false)
 })
 let invaderSprite: Sprite = null
-let playerProjectile: Sprite = null
+let fireRate = 0
 let asteroidSprite: Sprite = null
 let explosionSprite: Sprite = null
+let powerUpSprite: Sprite = null
+let playerProjectile: Sprite = null
+let powerUpList: Image[] = []
 let smallAsteroidList: Image[] = []
-let fireRate = 100
-let powerLevel = 1
+let powerLevel = 0
+let rocketCapacity = 3
+powerLevel = 1
 info.setLife(3)
 info.setScore(0)
 music.setVolume(130)
@@ -978,6 +1225,58 @@ let invadersList = [img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     `]
+powerUpList = [img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . d d . . . . . . . 
+    . . . . . . d 8 8 d . . . . . . 
+    . . . . . . d 8 8 d . . . . . . 
+    . . . . . . d 8 8 d . . . . . . 
+    . . . . . . d 8 8 d . . . . . . 
+    . . . . . . d 8 8 d . . . . . . 
+    . . . . . . d 8 8 d . . . . . . 
+    . . . . . . . d d . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    `, img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . d d . . . . . . . 
+    . . . . . . d 2 2 d . . . . . . 
+    . . . . . . d 2 2 d . . . . . . 
+    . . . . . . d 2 2 d . . . . . . 
+    . . . . . . d 2 2 d . . . . . . 
+    . . . . . . d 2 2 d . . . . . . 
+    . . . . . . d 2 2 d . . . . . . 
+    . . . . . . . d d . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    `, img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . d d . . . . . . . 
+    . . . . . . d 7 7 d . . . . . . 
+    . . . . . . d 7 7 d . . . . . . 
+    . . . . . . d 7 7 d . . . . . . 
+    . . . . . . d 7 7 d . . . . . . 
+    . . . . . . d 7 7 d . . . . . . 
+    . . . . . . d 7 7 d . . . . . . 
+    . . . . . . . d d . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    `]
 let playerSprite = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     1 1 1 1 1 1 2 2 . . . . . . . . 
@@ -999,45 +1298,57 @@ let playerSprite = sprites.create(img`
 controller.moveSprite(playerSprite)
 playerSprite.setPosition(19, 58)
 playerSprite.setStayInScreen(true)
-forever(function () {
-    if (controller.B.isPressed()) {
-        playerProjectile = sprites.create(img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . 1 1 1 1 . . . . . . . . 
-            . . . 2 8 8 8 8 8 . . . . . . . 
-            . . 2 5 1 1 1 1 1 1 1 1 1 1 1 1 
-            . 5 2 4 1 1 1 1 1 1 1 1 1 1 1 1 
-            . . . 2 8 8 8 8 8 . . . . . . . 
-            . . . . 1 1 1 . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            `, SpriteKind.LargeProjectile)
-        playerProjectile.setPosition(playerSprite.x, playerSprite.y)
-        playerProjectile.x += 15
-        playerProjectile.setVelocity(25, 0)
-        playerProjectile.lifespan = 2000
-        music.play(music.melodyPlayable(music.smallCrash), music.PlaybackMode.InBackground)
-        pause(1000)
+game.onUpdate(function () {
+    rocketCapacity = 5 - (sprites.allOfKind(SpriteKind.LargeProjectile).length + sprites.allOfKind(SpriteKind.Explosion).length)
+    for (let value of sprites.allOfKind(SpriteKind.LargeProjectile)) {
+        if (value.vx == 0) {
+            if (sprites.allOfKind(SpriteKind.Asteroid).length > 0) {
+                value.follow(sprites.allOfKind(SpriteKind.Asteroid).pop(), 200)
+            } else if (sprites.allOfKind(SpriteKind.Enemy).length > 0) {
+                value.follow(sprites.allOfKind(SpriteKind.Enemy).pop(), 200)
+            } else {
+                value.setVelocity(25, 0)
+            }
+        }
     }
 })
 forever(function () {
     if (controller.A.isPressed()) {
         music.play(music.createSoundEffect(WaveShape.Triangle, 1132, 1, 255, 0, 200, SoundExpressionEffect.None, InterpolationCurve.Curve), music.PlaybackMode.InBackground)
         if (powerLevel == 1) {
-            generateSmallProjectile(playerSprite, 15, 0, 125)
+            generateSmallProjectile(playerSprite, 15, 0, 150)
+            fireRate = 50
+        } else if (powerLevel == 2) {
             generateSmallProjectile(playerSprite, 5, -10, 125)
+            generateSmallProjectile(playerSprite, 15, 0, 125)
             generateSmallProjectile(playerSprite, 5, 10, 125)
+            fireRate = 100
+        } else if (powerLevel == 3) {
+            generateSmallProjectile(playerSprite, 0, -20, 175)
+            generateSmallProjectile(playerSprite, 5, -10, 175)
+            generateSmallProjectile(playerSprite, 15, 0, 175)
+            generateSmallProjectile(playerSprite, 5, 10, 175)
+            generateSmallProjectile(playerSprite, 0, 20, 175)
+            fireRate = 75
         } else {
             generateSmallProjectile(playerSprite, 15, 0, 125)
+            fireRate = 200
         }
         pause(fireRate)
+    }
+})
+forever(function () {
+    if (controller.B.isPressed() && rocketCapacity > 0) {
+        if (powerLevel == 1) {
+            generateLargeProjectile(playerSprite, 15, 0, 25)
+        } else if (powerLevel == 2) {
+            generateLargeProjectile(playerSprite, 5, -10, 200)
+            generateLargeProjectile(playerSprite, 5, 10, 200)
+        } else {
+            generateLargeProjectile(playerSprite, 15, 0, 25)
+        }
+        music.play(music.melodyPlayable(music.smallCrash), music.PlaybackMode.InBackground)
+        pause(1000)
     }
 })
 game.onUpdateInterval(500, function () {
@@ -1045,10 +1356,12 @@ game.onUpdateInterval(500, function () {
         asteroidSprite = sprites.create(largeAsteroidList._pickRandom(), SpriteKind.Asteroid)
         asteroidSprite.setPosition(scene.screenWidth(), randint(0, scene.screenHeight()))
         asteroidSprite.setVelocity(randint(-75, -100), 0)
+        asteroidSprite.setFlag(SpriteFlag.AutoDestroy, true)
     }
 })
 game.onUpdateInterval(500, function () {
     invaderSprite = sprites.create(invadersList._pickRandom(), SpriteKind.Enemy)
     invaderSprite.setPosition(scene.screenWidth(), randint(0, scene.screenHeight()))
     invaderSprite.setVelocity(randint(-75, -100), 0)
+    invaderSprite.setFlag(SpriteFlag.AutoDestroy, true)
 })
