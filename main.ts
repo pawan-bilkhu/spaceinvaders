@@ -741,6 +741,7 @@ function generateSmallProjectile (targetSprite: Sprite, offsetX: number, offsetY
     playerProjectile.x += offsetX
     playerProjectile.y += offsetY
     playerProjectile.setVelocity(speedX, 0)
+    playerProjectile.setFlag(SpriteFlag.AutoDestroy, true)
 }
 sprites.onDestroyed(SpriteKind.Explosion, function (sprite) {
     for (let value of sprites.allOfKind(SpriteKind.Asteroid)) {
