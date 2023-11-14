@@ -4,7 +4,8 @@
     "dependencies": {
         "device": "*",
         "Color Fading": "github:jwunderl/pxt-color#v0.2.2",
-        "animation": "*"
+        "animation": "*",
+        "arcade-background-scroll": "github:microsoft/arcade-background-scroll#6cfbf925b9a4d5ddf3e1078e6cf6ca6a1aebb301"
     },
     "files": [
         "main.blocks",
